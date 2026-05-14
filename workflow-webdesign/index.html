@@ -585,19 +585,15 @@ try {
 const PHASES = [
   { id:'projektstart', title:'Projektstart', items:[
     {text:'Projektbriefing mit dem Kunden durchführen'},
-    {text:'Ziele, Zielgruppe und Anforderungen dokumentieren'},
-    {text:'Zeitplan und Meilensteine festlegen'},
     {text:'Budget und Umfang schriftlich bestätigen',        label:'client'},
     {text:'Angebot erstellen und unterschreiben lassen',     label:'client'},
-    {text:'Projektordner lokal anlegen',                     label:'tech'},
+    {text:'Projektordner lokal anlegen',                     label:'tech', priority:3},
     {text:'Anzahlung / erste Rechnung stellen',              label:'client'},
   ]},
   { id:'onboarding', title:'Kunden-Onboarding', items:[
     {text:'Markenassets anfordern (Logo, Farben, Schriften)', label:'client'},
     {text:'Texte und Inhalte vom Kunden anfordern',           label:'client'},
     {text:'Bilder und Medien klären (Lizenz, Format)',        label:'client'},
-    {text:'Referenzen und Wettbewerber erfragen'},
-    {text:'Feedback-Prozess und Kommunikationskanal klären',  label:'client'},
     {text:'Bestehende Accounts und Zugangsdaten erfassen',    label:'critical'},
   ]},
   { id:'domain-email', title:'Domain & E-Mail', items:[
