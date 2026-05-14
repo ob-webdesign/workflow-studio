@@ -97,6 +97,43 @@ input, select { font-family: inherit; font-size: inherit; }
 }
 .btn-back:hover { color: var(--t1); }
 
+/* ── LOGIN ──────────────────────────────────────────────────── */
+#login-overlay {
+  position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(11,11,10,0.98); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  z-index: 999; display: flex; align-items: center; justify-content: center;
+}
+#login-overlay.hidden { display: none; }
+.login-modal {
+  background: var(--s2); border: 1px solid var(--b2); border-radius: 12px;
+  padding: 2.5rem; width: 100%; max-width: 380px; text-align: center;
+}
+.login-modal h1 {
+  font-family: var(--fdisp); font-size: 1.5rem; font-weight: 700;
+  margin-bottom: 0.5rem; letter-spacing: -0.02em;
+}
+.login-modal p {
+  font-size: 0.85rem; color: var(--t2); margin-bottom: 1.5rem;
+}
+#login-password {
+  width: 100%; padding: 0.75rem 1rem; background: var(--s1);
+  border: 1px solid var(--b2); border-radius: 6px; color: var(--t1);
+  font-size: 1rem; margin-bottom: 0.5rem;
+  transition: border-color 0.2s;
+}
+#login-password:focus { outline: none; border-color: var(--gold); }
+#login-password.error { border-color: var(--red); background: rgba(192,80,96,0.1); }
+#login-error {
+  color: var(--red); font-size: 0.75rem; margin-bottom: 1rem; min-height: 1rem;
+}
+#login-button {
+  width: 100%; padding: 0.75rem 1rem; background: var(--t1);
+  border: none; border-radius: 6px; color: var(--bg);
+  font-family: var(--fmono); font-weight: 500; cursor: pointer;
+  transition: opacity 0.15s, transform 0.15s;
+}
+#login-button:hover { opacity: 0.88; transform: translateY(-2px); }
+
 /* ── DASHBOARD ───────────────────────────────────────────────── */
 .dashboard-main {
   max-width: 1200px; margin: 0 auto; padding: 2.5rem 1.75rem 5rem;
@@ -373,6 +410,17 @@ input, select { font-family: inherit; font-size: inherit; }
 </head>
 <body>
 
+<!-- LOGIN OVERLAY -->
+<div id="login-overlay">
+  <div class="login-modal">
+    <h1>studio·os</h1>
+    <p>Passwort erforderlich</p>
+    <input type="password" id="login-password" placeholder="Passwort eingeben" autocomplete="off">
+    <div id="login-error"></div>
+    <button id="login-button">Entsperren</button>
+  </div>
+</div>
+
 <!-- NAV -->
 <header class="app-nav">
   <div class="app-nav-inner">
@@ -474,6 +522,43 @@ input, select { font-family: inherit; font-size: inherit; }
 <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-database-compat.js"></script>
 <script>
+/* LOGIN PROTECTION */
+const LOGIN_PASSWORD = 'studio'; // Passwort ändern nach Belieben
+let isAuthenticated = false;
+
+function checkAuth() {
+  const loginOverlay = document.getElementById('login-overlay');
+  const loginBtn = document.getElementById('login-button');
+  const loginInput = document.getElementById('login-password');
+  const loginError = document.getElementById('login-error');
+
+  const handleLogin = () => {
+    const pwd = loginInput.value;
+    if (pwd === LOGIN_PASSWORD) {
+      isAuthenticated = true;
+      loginOverlay.classList.add('hidden');
+      loginInput.value = '';
+      loginError.textContent = '';
+    } else {
+      loginInput.classList.add('error');
+      loginError.textContent = '❌ Passwort falsch';
+      setTimeout(() => {
+        loginInput.classList.remove('error');
+        loginError.textContent = '';
+      }, 2000);
+      loginInput.value = '';
+    }
+  };
+
+  loginBtn.addEventListener('click', handleLogin);
+  loginInput.addEventListener('keypress', e => {
+    if (e.key === 'Enter') handleLogin();
+  });
+  loginInput.focus();
+}
+
+checkAuth();
+
 /* FIREBASE CONFIG */
 const firebaseConfig = {
   apiKey: "AIzaSyBOEVQBlxgsg-_IuExwevCGdMrOPXnXyqo",
