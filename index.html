@@ -653,7 +653,10 @@ function relTime(iso) {
   return new Date(iso).toLocaleDateString('de-DE',{day:'2-digit',month:'2-digit',year:'numeric'});
 }
 function phaseProg(p, phId) {
-  const ph=PHASES.find(x=>x.id===phId), total=ph.items.length;
+  if(!p || !p.checks) return {done:0,total:0,pct:0};
+  const ph=PHASES.find(x=>x.id===phId);
+  if(!ph || !ph.items) return {done:0,total:0,pct:0};
+  const total=ph.items.length;
   const done=ph.items.filter((_,i)=>p.checks[`${phId}-${i}`]).length;
   return {done,total,pct:total?Math.round(done/total*100):0};
 }
@@ -935,22 +938,15 @@ const Sync = {
     window.db.ref('data').on('value', (snapshot) => {
       const remoteData = snapshot.val();
       console.log('🔔 Firebase data received:', remoteData);
-      if (remoteData && !isInitialLoad) {
-        isInitialLoad = true;
+      if (remoteData && typeof remoteData === 'object') {
         const localData = State.raw();
-        if (remoteData.projects && remoteData.projects.length > localData.projects.length) {
-          Object.assign(localData, remoteData);
-          localStorage.setItem(Storage.KEY, JSON.stringify(localData));
-          if (State.activeId) {
-            ProjectView.render(State.activeId);
-          } else {
-            Dashboard.render();
-          }
-        }
-      } else if (remoteData && isInitialLoad) {
-        const localData = State.raw();
+        if (!remoteData.projects) remoteData.projects = [];
+        if (!remoteData.activeProjectId) remoteData.activeProjectId = null;
+        remoteData.projects.forEach(p => {
+          if (!p.checks) p.checks = {};
+          if (!p.expandedPhases) p.expandedPhases = [];
+        });
         const hasChanges = JSON.stringify(localData) !== JSON.stringify(remoteData);
-        console.log('🔄 Sync check - hasChanges:', hasChanges);
         if (hasChanges) {
           console.log('🔄 Syncing changes...');
           Object.assign(localData, remoteData);
@@ -961,6 +957,7 @@ const Sync = {
             Dashboard.render();
           }
         }
+        isInitialLoad = true;
       }
     }, (err) => {
       console.error('❌ Firebase listener error:', err);
