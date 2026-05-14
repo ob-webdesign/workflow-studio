@@ -259,6 +259,34 @@ input, select { font-family: inherit; font-size: inherit; }
 .pv-dot { cursor: pointer; transition: opacity 0.15s; }
 .pv-dot:hover { opacity: 0.75; }
 
+/* ── STATUS TOGGLES ─────────────────────────────────────────── */
+.status-toggle {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 0.28rem 0.65rem 0.28rem 0.55rem;
+  border-radius: 6px; font-size: 0.68rem; font-weight: 500;
+  font-family: var(--fmono); cursor: pointer; border: 1px solid;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+  user-select: none; line-height: 1;
+  background: none;
+}
+.status-toggle svg { flex-shrink: 0; }
+.toggle-off {
+  color: var(--t3); border-color: rgba(255,255,255,0.08);
+}
+.toggle-off:hover { color: var(--t2); border-color: rgba(255,255,255,0.14); background: rgba(255,255,255,0.03); }
+.toggle-live {
+  background: var(--grndim); color: var(--green); border-color: rgba(90,143,107,0.25);
+}
+.toggle-live:hover { background: rgba(90,143,107,0.2); }
+.toggle-due {
+  background: var(--reddim); color: var(--red); border-color: rgba(192,80,96,0.25);
+}
+.toggle-due:hover { background: rgba(192,80,96,0.2); }
+.toggle-paid {
+  background: var(--grndim); color: var(--green); border-color: rgba(90,143,107,0.25);
+}
+.toggle-paid:hover { background: rgba(90,143,107,0.2); }
+
 .pv-progress-section { padding-bottom: 1.2rem; }
 .pv-progress-header {
   display: flex; justify-content: space-between; align-items: baseline;
@@ -559,9 +587,18 @@ input, select { font-family: inherit; font-size: inherit; }
           <span id="pv-client">—</span>
         </span>
         <span class="pv-meta-sep">·</span>
-        <span class="pv-dot dot-muted" id="dot-domain" title="Domain Live (klicken)">Domain</span>
-        <span class="pv-dot dot-muted" id="dot-deploy" title="Deployment Live (klicken)">Deploy</span>
-        <span class="pv-dot dot-muted" id="dot-invoice" title="Rechnung offen (klicken)">Rechnung</span>
+        <button class="status-toggle toggle-off" id="dot-domain">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          <span id="dot-domain-label">Domain offline</span>
+        </button>
+        <button class="status-toggle toggle-off" id="dot-deploy">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/></svg>
+          <span id="dot-deploy-label">Deploy ausstehend</span>
+        </button>
+        <button class="status-toggle toggle-due" id="dot-invoice">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="9" y1="7" x2="15" y2="7"/><line x1="9" y1="12" x2="15" y2="12"/><line x1="9" y1="17" x2="13" y2="17"/></svg>
+          <span id="dot-invoice-label">Rechnung offen</span>
+        </button>
         <span class="pv-meta-sep">·</span>
         <span class="pv-meta-item">
           <span class="pv-meta-label">Zuletzt</span>
@@ -988,9 +1025,12 @@ const ProjectView = {
     document.getElementById('pv-progress-pct').textContent=pct+'%';
     document.getElementById('pv-progress-sub').textContent=`${done} von ${total} Aufgaben erledigt`;
     document.getElementById('pv-open-count').textContent=total-done;
-    document.getElementById('dot-domain').className=`pv-dot ${p.domainLive?'dot-green':'dot-muted'}`;
-    document.getElementById('dot-deploy').className=`pv-dot ${p.deployLive?'dot-green':'dot-muted'}`;
-    document.getElementById('dot-invoice').className=`pv-dot ${p.invoiceDue?'dot-red':'dot-muted'}`;
+    document.getElementById('dot-domain').className  = `status-toggle ${p.domainLive ? 'toggle-live' : 'toggle-off'}`;
+    document.getElementById('dot-domain-label').textContent = p.domainLive ? 'Domain live' : 'Domain offline';
+    document.getElementById('dot-deploy').className  = `status-toggle ${p.deployLive ? 'toggle-live' : 'toggle-off'}`;
+    document.getElementById('dot-deploy-label').textContent = p.deployLive ? 'Deploy live' : 'Deploy ausstehend';
+    document.getElementById('dot-invoice').className = `status-toggle ${p.invoiceDue ? 'toggle-due' : 'toggle-paid'}`;
+    document.getElementById('dot-invoice-label').textContent = p.invoiceDue ? 'Rechnung offen' : 'Rechnung bezahlt';
   },
   renderPhases(p) {
     const c=document.getElementById('pv-phases');
