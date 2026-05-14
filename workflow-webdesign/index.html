@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Studio OS — Webdesign Agentur</title>
+<title>OB Webdesign — Workflow</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
@@ -152,11 +152,18 @@ input, select { font-family: inherit; font-size: inherit; }
 .empty-state p { font-size: 0.8rem; margin-bottom: 1.75rem; }
 
 .project-card {
-  background: var(--s1); border-radius: var(--radius); box-shadow: var(--shadow);
-  cursor: pointer; transition: transform 0.18s ease, box-shadow 0.18s ease;
+  background: rgba(255,255,255,0.025);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: var(--radius);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.4);
+  cursor: pointer; transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s;
   animation: fadeUp 0.4s ease both;
 }
-.project-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-hover); }
+.project-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+  border-color: rgba(255,255,255,0.12);
+}
 .project-card-inner { padding: 1.4rem; }
 .project-card-top {
   display: flex; align-items: flex-start; justify-content: space-between;
@@ -191,12 +198,12 @@ input, select { font-family: inherit; font-size: inherit; }
 .project-card-progress {
   display: flex; align-items: center; gap: 0.65rem; margin-bottom: 1rem;
 }
-.progress-track { flex: 1; height: 2px; background: var(--b1); border-radius: 99px; overflow: hidden; }
+.progress-track { flex: 1; height: 6px; background: rgba(255,255,255,0.06); border-radius: 99px; overflow: hidden; }
 .progress-fill {
-  height: 100%; background: linear-gradient(90deg, var(--gold), var(--green));
+  height: 100%; background: linear-gradient(90deg, var(--gold), rgba(201,168,76,0.75));
   border-radius: 99px; transition: width 0.5s cubic-bezier(0.4,0,0.2,1);
 }
-.progress-label { font-size: 0.65rem; color: var(--t2); min-width: 2.5rem; text-align: right; }
+.progress-label { font-size: 0.65rem; color: var(--t2); min-width: 2.5rem; text-align: right; font-variant-numeric: tabular-nums; }
 .project-card-footer {
   display: flex; align-items: center; justify-content: space-between; gap: 0.75rem;
 }
@@ -253,50 +260,85 @@ input, select { font-family: inherit; font-size: inherit; }
 .pv-dot:hover { opacity: 0.75; }
 
 .pv-progress-row {
-  display: flex; align-items: center; gap: 0.75rem; padding-bottom: 1rem;
+  display: flex; align-items: center; gap: 0.85rem; padding-bottom: 1.1rem;
 }
-.pv-progress-track { flex: 1; height: 2px; background: var(--b1); border-radius: 99px; overflow: hidden; }
+.pv-progress-track { flex: 1; height: 7px; background: rgba(255,255,255,0.06); border-radius: 99px; overflow: hidden; }
 .pv-progress-fill {
-  height: 100%; background: linear-gradient(90deg, var(--gold), var(--green));
+  height: 100%; background: linear-gradient(90deg, var(--gold), rgba(201,168,76,0.7));
   border-radius: 99px; transition: width 0.45s cubic-bezier(0.4,0,0.2,1); width: 0%;
 }
-.pv-progress-pct { font-size: 0.65rem; color: var(--t2); min-width: 2.5rem; text-align: right; }
+.pv-progress-pct {
+  font-size: 0.72rem; font-family: var(--fdisp); font-weight: 700;
+  color: var(--gold); min-width: 3rem; text-align: right;
+  letter-spacing: -0.02em;
+}
 
 .pv-main { max-width: 1200px; margin: 0 auto; padding: 1.75rem 1.75rem 6rem; }
 .phases-container { display: flex; flex-direction: column; gap: 0.6rem; }
 
 /* ── PHASE CARDS ─────────────────────────────────────────────── */
 .phase-card {
-  background: var(--s1); border-radius: var(--radius); box-shadow: var(--shadow);
+  background: rgba(255,255,255,0.025);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: var(--radius);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.4);
   overflow: hidden; animation: fadeUp 0.4s ease both;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.phase-card:hover {
+  border-color: rgba(255,255,255,0.11);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.35);
+}
+.phase-active {
+  background: rgba(201,168,76,0.07);
+  border: 1.5px solid rgba(201,168,76,0.35);
+  box-shadow: 0 0 20px rgba(201,168,76,0.08), 0 2px 8px rgba(0,0,0,0.4);
+}
+.phase-active:hover {
+  border-color: rgba(201,168,76,0.5);
+  box-shadow: 0 0 28px rgba(201,168,76,0.12), 0 4px 16px rgba(0,0,0,0.35);
 }
 .phase-done {
-  background: rgba(90,143,107,0.05);
-  box-shadow: 0 1px 3px rgba(0,0,0,0.5), 0 0 0 1px rgba(90,143,107,0.15);
+  background: rgba(90,143,107,0.04);
+  border: 1px solid rgba(90,143,107,0.18);
+  opacity: 0.72;
 }
+.phase-done:hover { opacity: 0.88; border-color: rgba(90,143,107,0.28); }
 .phase-header {
   display: grid; grid-template-columns: 2.5rem 1fr auto auto;
-  align-items: center; gap: 0.75rem; padding: 1rem 1.1rem;
+  align-items: center; gap: 0.75rem; padding: 1.1rem 1.2rem;
   cursor: pointer; user-select: none; transition: background 0.15s;
 }
 .phase-header:hover { background: rgba(255,255,255,0.02); }
-.phase-num { font-size: 0.6rem; font-weight: 300; color: var(--t3); letter-spacing: 0.06em; text-align: right; }
+.phase-num {
+  font-size: 0.58rem; font-weight: 400; color: var(--t3);
+  letter-spacing: 0.08em; text-align: right; text-transform: uppercase;
+}
+.phase-active .phase-num { color: rgba(201,168,76,0.6); }
 .phase-header-info { min-width: 0; }
 .phase-title {
-  font-family: var(--fdisp); font-weight: 700; font-size: 0.88rem;
-  letter-spacing: -0.02em; color: var(--t1); display: block; margin-bottom: 0.3rem;
+  font-family: var(--fdisp); font-weight: 700; font-size: 0.9rem;
+  letter-spacing: -0.02em; color: var(--t1); display: block; margin-bottom: 0.45rem;
 }
-.phase-mini-bar { height: 2px; background: var(--b1); border-radius: 99px; overflow: hidden; }
-.phase-mini-fill { height: 100%; background: var(--gold); border-radius: 99px; transition: width 0.4s ease; }
+.phase-done .phase-title { color: var(--t2); }
+.phase-mini-bar {
+  height: 5px; background: rgba(255,255,255,0.06);
+  border-radius: 99px; overflow: hidden;
+}
+.phase-mini-fill {
+  height: 100%; background: var(--gold);
+  border-radius: 99px; transition: width 0.4s ease;
+}
+.phase-active .phase-mini-fill { background: linear-gradient(90deg, var(--gold), rgba(201,168,76,0.7)); }
 .phase-done .phase-mini-fill { background: var(--green); }
 
 .phase-badge {
-  font-size: 0.58rem; font-weight: 500; padding: 0.2rem 0.55rem;
+  font-size: 0.58rem; font-weight: 500; padding: 0.22rem 0.6rem;
   border-radius: 99px; letter-spacing: 0.03em; white-space: nowrap;
 }
 .badge-done    { background: var(--grndim); color: var(--green); border: 1px solid rgba(90,143,107,0.2); }
-.badge-active  { background: var(--golddim); color: var(--gold); border: 1px solid rgba(201,168,76,0.2); }
-.badge-pending { background: transparent; color: var(--t3); border: 1px solid var(--b1); }
+.badge-active  { background: var(--golddim); color: var(--gold); border: 1px solid rgba(201,168,76,0.25); }
+.badge-pending { background: transparent; color: var(--t3); border: 1px solid rgba(255,255,255,0.07); }
 
 .expand-icon { color: var(--t3); transition: transform 0.25s ease; flex-shrink: 0; }
 
@@ -413,7 +455,7 @@ input, select { font-family: inherit; font-size: inherit; }
 <!-- LOGIN OVERLAY -->
 <div id="login-overlay">
   <div class="login-modal">
-    <h1>studio·os</h1>
+    <h1><span>OB</span> Webdesign</h1>
     <p>Passwort erforderlich</p>
     <input type="password" id="login-password" placeholder="Passwort eingeben" autocomplete="off">
     <div id="login-error"></div>
@@ -424,7 +466,7 @@ input, select { font-family: inherit; font-size: inherit; }
 <!-- NAV -->
 <header class="app-nav">
   <div class="app-nav-inner">
-    <div class="logo">studio<span>·</span>os</div>
+    <div class="logo"><span>OB</span> Webdesign</div>
     <div id="nav-dashboard">
       <div class="global-stats">
         <div class="gstat"><strong id="stat-active">0</strong> aktiv</div>
@@ -897,8 +939,9 @@ const ProjectView = {
   phaseHTML(p,ph,pi) {
     const {done,total,pct}=phaseProg(p,ph.id), isOpen=p.expandedPhases.includes(ph.id), isDone=pct===100;
     const num=String(pi+1).padStart(2,'0');
-    const bc=isDone?'badge-done':pct>0?'badge-active':'badge-pending';
-    const bt=isDone?'✓':pct>0?`${done}/${total}`:total;
+    const isActive = pct>0 && !isDone;
+    const bc=isDone?'badge-done':isActive?'badge-active':'badge-pending';
+    const bt=isDone?'✓':isActive?`${done}/${total}`:total;
     const items=ph.items.map((item,i)=>{
       const checked=p.checks[`${ph.id}-${i}`]?' checked':'';
       const lbl=item.label?`<span class="item-label label-${item.label}">${LABELS[item.label]}</span>`:'';
@@ -907,7 +950,8 @@ const ProjectView = {
           <path d="M1 3.5L3.5 6L8 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
         <span class="check-text">${esc(item.text)}</span>${lbl}</li>`;
     }).join('');
-    return `<div class="phase-card${isOpen?' open':''}${isDone?' phase-done':''}" data-phase-id="${ph.id}">
+    const phClass = isDone ? ' phase-done' : isActive ? ' phase-active' : '';
+    return `<div class="phase-card${isOpen?' open':''}${phClass}" data-phase-id="${ph.id}">
       <div class="phase-header" data-id="${ph.id}">
         <span class="phase-num">${num}</span>
         <div class="phase-header-info">
@@ -927,9 +971,16 @@ const ProjectView = {
     const fill=card.querySelector('.phase-mini-fill'), badge=card.querySelector('.phase-badge');
     if(fill) fill.style.width=pct+'%';
     if(badge) {
-      if(pct===100) {badge.className='phase-badge badge-done';badge.textContent='✓';card.classList.add('phase-done');}
-      else if(pct>0){badge.className='phase-badge badge-active';badge.textContent=`${done}/${total}`;card.classList.remove('phase-done');}
-      else          {badge.className='phase-badge badge-pending';badge.textContent=total;card.classList.remove('phase-done');}
+      if(pct===100) {
+        badge.className='phase-badge badge-done'; badge.textContent='✓';
+        card.classList.add('phase-done'); card.classList.remove('phase-active');
+      } else if(pct>0) {
+        badge.className='phase-badge badge-active'; badge.textContent=`${done}/${total}`;
+        card.classList.remove('phase-done'); card.classList.add('phase-active');
+      } else {
+        badge.className='phase-badge badge-pending'; badge.textContent=total;
+        card.classList.remove('phase-done'); card.classList.remove('phase-active');
+      }
     }
   }
 };
