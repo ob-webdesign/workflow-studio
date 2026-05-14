@@ -1,0 +1,113 @@
+<h2>3 Design-Ansätze für dein Workflow Studio</h2>
+<p class="subtitle">Welcher passt besser zu deiner Vision? (Subtil & elegant, Gesamtredesign)</p>
+
+<div class="cards">
+  <!-- Ansatz A: Klassisch Modern -->
+  <div class="card" data-choice="approach-a" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div style="background: linear-gradient(135deg, #0b0b0a 0%, #1a1a18 100%); padding: 20px; border-radius: 8px; min-height: 200px; display: flex; flex-direction: column; gap: 12px;">
+        <!-- NAV Mock -->
+        <div style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.08);">
+          <div style="font-weight: 800; color: #c9a84c;">Studio OS</div>
+          <div style="display: flex; gap: 8px; font-size: 11px;">
+            <div style="color: #8a8680;">3/11 Phasen</div>
+            <button style="background: #ede8dc; color: #0b0b0a; padding: 4px 10px; border-radius: 4px; border: none; cursor: pointer; font-size: 11px; font-weight: 600;">+ Projekt</button>
+          </div>
+        </div>
+        <!-- Phases Grid -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+          <div style="background: rgba(201,168,76,0.15); border: 1px solid rgba(201,168,76,0.3); padding: 12px; border-radius: 8px; font-size: 11px; color: #ede8dc;">
+            <div style="font-weight: 600; margin-bottom: 4px;">1. Start</div>
+            <div style="color: #8a8680; font-size: 10px;">3/5 items</div>
+          </div>
+          <div style="background: rgba(90,143,107,0.15); border: 1px solid rgba(90,143,107,0.3); padding: 12px; border-radius: 8px; font-size: 11px; color: #ede8dc;">
+            <div style="font-weight: 600; margin-bottom: 4px;">2. Onboarding</div>
+            <div style="color: #8a8680; font-size: 10px;">2/4 items</div>
+          </div>
+          <div style="background: rgba(90,130,212,0.15); border: 2px solid rgba(90,130,212,0.5); padding: 12px; border-radius: 8px; font-size: 11px; color: #ede8dc; box-shadow: 0 0 12px rgba(90,130,212,0.2);">
+            <div style="font-weight: 600; margin-bottom: 4px;">3. Entwicklung</div>
+            <div style="color: #8a8680; font-size: 10px;">0/6 items</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>A: Klassisch Modern</h3>
+      <p><strong>Subtile Glasmorphism:</strong> Farbige Borders + Shadows. Klare Grid-Struktur. Moderne Icons. Fokus auf Lesbarkeit mit eleganten Akzenten.</p>
+      <p style="font-size: 12px; color: #8a8680; margin-top: 8px;">✓ Elegant ✓ Übersichtlich ✓ Modern</p>
+    </div>
+  </div>
+
+  <!-- Ansatz B: Card-fokussiert -->
+  <div class="card" data-choice="approach-b" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div style="background: linear-gradient(135deg, #0b0b0a 0%, #1a1a18 100%); padding: 20px; border-radius: 8px; min-height: 200px; display: flex; flex-direction: column; gap: 12px;">
+        <!-- NAV Mock -->
+        <div style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.08);">
+          <div style="font-weight: 800; color: #c9a84c;">Studio OS</div>
+          <button style="background: #ede8dc; color: #0b0b0a; padding: 4px 10px; border-radius: 4px; border: none; cursor: pointer; font-size: 11px; font-weight: 600;">+ Projekt</button>
+        </div>
+        <!-- Large Phase Cards -->
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <div style="background: rgba(90,130,212,0.1); backdrop-filter: blur(10px); border: 1px solid rgba(90,130,212,0.2); padding: 14px; border-radius: 10px; box-shadow: 0 8px 24px rgba(0,0,0,0.3);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+              <div style="font-weight: 700; color: #ede8dc; font-size: 13px;">3. Lokale Entwicklung</div>
+              <div style="background: #5a82d4; color: white; padding: 2px 8px; border-radius: 4px; font-size: 10px; font-weight: 600;">AKTIV</div>
+            </div>
+            <div style="color: #8a8680; font-size: 11px;">0/6 Aufgaben</div>
+          </div>
+          <div style="background: rgba(201,168,76,0.1); backdrop-filter: blur(10px); border: 1px solid rgba(201,168,76,0.2); padding: 14px; border-radius: 10px;">
+            <div style="font-weight: 700; color: #ede8dc; font-size: 13px;">1. Projektstart</div>
+            <div style="color: #8a8680; font-size: 11px;">3/5 Aufgaben</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>B: Card-fokussiert</h3>
+      <p><strong>Größere Phase-Karten:</strong> Größeres Spacing. Aktive Phase hervorgehoben. Subtle Blur + Shadows. Status-Badges prominent. Mehr Atmungsraum.</p>
+      <p style="font-size: 12px; color: #8a8680; margin-top: 8px;">✓ Großer ✓ Prominent ✓ Modern</p>
+    </div>
+  </div>
+
+  <!-- Ansatz C: Minimalistisch -->
+  <div class="card" data-choice="approach-c" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div style="background: linear-gradient(135deg, #0b0b0a 0%, #1a1a18 100%); padding: 20px; border-radius: 8px; min-height: 200px; display: flex; flex-direction: column; gap: 16px;">
+        <!-- NAV Mock -->
+        <div style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 16px; border-bottom: 1px solid rgba(255,255,255,0.08);">
+          <div style="font-weight: 800; color: #c9a84c; font-size: 14px;">STUDIO OS</div>
+          <button style="background: #ede8dc; color: #0b0b0a; padding: 6px 14px; border-radius: 6px; border: none; cursor: pointer; font-size: 12px; font-weight: 600;">+ New Project</button>
+        </div>
+        <!-- Clean List -->
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.06);">
+            <div>
+              <div style="font-weight: 600; color: #ede8dc; font-size: 12px;">1. Projektstart</div>
+              <div style="color: #8a8680; font-size: 10px; margin-top: 2px;">3 / 5 Aufgaben</div>
+            </div>
+            <div style="background: rgba(201,168,76,0.2); color: #c9a84c; padding: 3px 8px; border-radius: 4px; font-size: 10px; font-weight: 600;">60%</div>
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.06); background: rgba(90,130,212,0.08); padding-left: 10px; margin-left: -10px; padding-right: 10px; margin-right: -10px;">
+            <div>
+              <div style="font-weight: 600; color: #ede8dc; font-size: 12px;">3. Entwicklung</div>
+              <div style="color: #8a8680; font-size: 10px; margin-top: 2px;">0 / 6 Aufgaben</div>
+            </div>
+            <div style="background: #5a82d4; color: white; padding: 3px 8px; border-radius: 4px; font-size: 10px; font-weight: 600;">→</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>C: Minimalistisch</h3>
+      <p><strong>Extreme Klarheit:</strong> List-basiert statt Karten. Prozentbar statt Items-Zähler. Aktivität durch Highlight-Hintergrund. Maximal lesbar. Keine visuellen Effekte.</p>
+      <p style="font-size: 12px; color: #8a8680; margin-top: 8px;">✓ Sehr Klar ✓ Fokussiert ✓ Funktional</p>
+    </div>
+  </div>
+</div>
+
+<div style="margin-top: 24px; padding: 16px; background: rgba(255,255,255,0.04); border-radius: 8px;">
+  <p style="font-size: 12px; color: #8a8680; line-height: 1.6;">
+    <strong>Was macht dich neugierig?</strong> Alle drei Ansätze sind "subtil & elegant" — sie unterscheiden sich nur in der Balance zwischen Glasmorphism-Effekten und Minimalismus.
+  </p>
+</div>

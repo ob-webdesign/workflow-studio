@@ -1,0 +1,140 @@
+<h2>Design v2 — Verbessertes Layout</h2>
+<p class="subtitle">Gesamtfortschritt · Abgeschlossen-State · Neutral/Gold Farbschema</p>
+
+<div class="mockup">
+  <div class="mockup-header">Desktop View</div>
+  <div class="mockup-body" style="background: #0b0b0a; padding: 0; font-family: 'IBM Plex Mono', monospace;">
+
+    <!-- NAV -->
+    <div style="display:flex; justify-content:space-between; align-items:center; padding:14px 28px; border-bottom:1px solid rgba(255,255,255,0.08); background:rgba(11,11,10,0.95);">
+      <div style="font-weight:800; font-size:15px; letter-spacing:-0.03em; color:#ede8dc;">
+        <span style="color:#c9a84c;">OB</span> Webdesign
+      </div>
+      <div style="display:flex; gap:20px; align-items:center;">
+        <div style="font-size:11px; color:#8a8680;">
+          <strong style="color:#ede8dc; font-size:13px;">3</strong> / 11 aktiv
+        </div>
+        <button style="background:#ede8dc; color:#0b0b0a; padding:7px 16px; border-radius:6px; border:none; font-size:11px; font-weight:600;">+ Projekt</button>
+      </div>
+    </div>
+
+    <!-- GESAMT-FORTSCHRITT (NEU) -->
+    <div style="padding:20px 28px; border-bottom:1px solid rgba(255,255,255,0.06);">
+      <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:8px;">
+        <div style="font-size:11px; color:#8a8680; letter-spacing:0.08em; text-transform:uppercase;">Gesamtfortschritt</div>
+        <div style="font-size:13px; font-weight:700; color:#c9a84c;">37%</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.06); border-radius:6px; height:8px; overflow:hidden;">
+        <div style="background:linear-gradient(90deg, #c9a84c, rgba(201,168,76,0.7)); height:100%; width:37%; border-radius:6px; transition:width 0.5s;"></div>
+      </div>
+      <div style="font-size:10px; color:#4a4845; margin-top:6px;">12 von 32 Aufgaben erledigt</div>
+    </div>
+
+    <!-- PHASES GRID -->
+    <div style="padding:24px 28px;">
+      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:16px;">
+
+        <!-- FERTIG (NEU) -->
+        <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.07); padding:18px; border-radius:12px; opacity:0.6;">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:10px;">
+            <div>
+              <div style="font-size:10px; color:#4a4845; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:4px;">Phase 1</div>
+              <div style="font-weight:700; color:#8a8680; font-size:13px;">Projektstart</div>
+            </div>
+            <div style="background:rgba(90,143,107,0.2); color:#5a8f6b; padding:3px 8px; border-radius:4px; font-size:10px; font-weight:600;">✓ Fertig</div>
+          </div>
+          <div style="background:rgba(90,143,107,0.15); border-radius:4px; height:5px; overflow:hidden; margin-bottom:6px;">
+            <div style="background:#5a8f6b; height:100%; width:100%;"></div>
+          </div>
+          <div style="font-size:10px; color:#4a4845;">5 / 5 · 100%</div>
+        </div>
+
+        <!-- FERTIG -->
+        <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.07); padding:18px; border-radius:12px; opacity:0.6;">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:10px;">
+            <div>
+              <div style="font-size:10px; color:#4a4845; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:4px;">Phase 2</div>
+              <div style="font-weight:700; color:#8a8680; font-size:13px;">Onboarding</div>
+            </div>
+            <div style="background:rgba(90,143,107,0.2); color:#5a8f6b; padding:3px 8px; border-radius:4px; font-size:10px; font-weight:600;">✓ Fertig</div>
+          </div>
+          <div style="background:rgba(90,143,107,0.15); border-radius:4px; height:5px; overflow:hidden; margin-bottom:6px;">
+            <div style="background:#5a8f6b; height:100%; width:100%;"></div>
+          </div>
+          <div style="font-size:10px; color:#4a4845;">4 / 4 · 100%</div>
+        </div>
+
+        <!-- AKTIV (GOLD) -->
+        <div style="background:rgba(201,168,76,0.08); border:2px solid rgba(201,168,76,0.4); padding:18px; border-radius:12px; box-shadow:0 0 24px rgba(201,168,76,0.1);">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:10px;">
+            <div>
+              <div style="font-size:10px; color:#c9a84c; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:4px;">Phase 3 · Aktiv</div>
+              <div style="font-weight:700; color:#ede8dc; font-size:13px;">Lok. Entwicklung</div>
+            </div>
+            <div style="font-size:16px;">💻</div>
+          </div>
+          <div style="background:rgba(201,168,76,0.15); border-radius:4px; height:5px; overflow:hidden; margin-bottom:6px;">
+            <div style="background:#c9a84c; height:100%; width:0%;"></div>
+          </div>
+          <div style="font-size:10px; color:#8a8680;">0 / 6 · 0%</div>
+        </div>
+
+        <!-- NOCH NICHT AKTIV (NEUTRAL) -->
+        <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.07); padding:18px; border-radius:12px;">
+          <div style="margin-bottom:10px;">
+            <div style="font-size:10px; color:#4a4845; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:4px;">Phase 4</div>
+            <div style="font-weight:700; color:#ede8dc; font-size:13px;">Domain & E-Mail</div>
+          </div>
+          <div style="background:rgba(255,255,255,0.06); border-radius:4px; height:5px; overflow:hidden; margin-bottom:6px;">
+            <div style="height:100%; width:0%;"></div>
+          </div>
+          <div style="font-size:10px; color:#4a4845;">0 / 3 · 0%</div>
+        </div>
+
+        <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.07); padding:18px; border-radius:12px;">
+          <div style="margin-bottom:10px;">
+            <div style="font-size:10px; color:#4a4845; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:4px;">Phase 5</div>
+            <div style="font-weight:700; color:#ede8dc; font-size:13px;">Vercel Setup</div>
+          </div>
+          <div style="background:rgba(255,255,255,0.06); border-radius:4px; height:5px; overflow:hidden; margin-bottom:6px;">
+            <div style="height:100%; width:0%;"></div>
+          </div>
+          <div style="font-size:10px; color:#4a4845;">0 / 4 · 0%</div>
+        </div>
+
+        <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.07); padding:18px; border-radius:12px; display:flex; align-items:center; justify-content:center;">
+          <div style="text-align:center; color:#4a4845; font-size:11px;">
+            <div style="font-size:20px; margin-bottom:6px; opacity:0.5;">•••</div>
+            6 weitere Phasen
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- LEGENDE -->
+<div style="margin-top:20px; display:flex; gap:20px; flex-wrap:wrap; padding:16px; background:rgba(255,255,255,0.03); border-radius:8px;">
+  <div style="display:flex; align-items:center; gap:8px; font-size:12px; color:#8a8680;">
+    <div style="width:12px; height:12px; border-radius:3px; background:rgba(90,143,107,0.2); border:1px solid #5a8f6b;"></div>
+    Abgeschlossen (gedimmt)
+  </div>
+  <div style="display:flex; align-items:center; gap:8px; font-size:12px; color:#8a8680;">
+    <div style="width:12px; height:12px; border-radius:3px; background:rgba(201,168,76,0.15); border:2px solid rgba(201,168,76,0.5);"></div>
+    Aktive Phase (Gold)
+  </div>
+  <div style="display:flex; align-items:center; gap:8px; font-size:12px; color:#8a8680;">
+    <div style="width:12px; height:12px; border-radius:3px; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08);"></div>
+    Ausstehend (neutral)
+  </div>
+</div>
+
+<div style="margin-top:16px; padding:14px 16px; background:rgba(201,168,76,0.06); border:1px solid rgba(201,168,76,0.2); border-radius:8px;">
+  <p style="font-size:12px; color:#c9a84c; line-height:1.6;">
+    <strong>Wichtigste Änderungen zu v1:</strong><br>
+    ✓ Gesamtfortschrittsbalken mit Prozent & Aufgaben-Zähler<br>
+    ✓ Fertige Phasen gedimmt mit grünem "✓ Fertig"-Badge<br>
+    ✓ Nur aktive Phase in Gold hervorgehoben (kein Farb-Chaos)<br>
+    ✓ Ausstehende Phasen einheitlich neutral-dunkel
+  </p>
+</div>
