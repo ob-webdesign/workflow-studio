@@ -744,7 +744,7 @@ const Dashboard = {
       grid.innerHTML=`<div class="empty-state"><div class="empty-icon">◈</div><h2>Kein Projekt vorhanden</h2><p>Erstelle dein erstes Projekt, um loszulegen.</p><button class="btn-primary" onclick="Modal.show()">+ Neues Projekt</button></div>`;
       return;
     }
-    grid.innerHTML=ps.map(p=>this.cardHTML(p)).join('');
+    grid.innerHTML=ps.map(p=>this.cardHTML(p)).join('')+this.addCardHTML();
     grid.querySelectorAll('.project-card').forEach(card=>{
       card.addEventListener('click',e=>{if(e.target.closest('.btn-delete'))return;Router.showProject(card.dataset.id);});
     });
@@ -755,6 +755,7 @@ const Dashboard = {
         if(p&&confirm(`"${p.name}" wirklich löschen?`)){Projects.delete(btn.dataset.id);Dashboard.render();}
       });
     });
+    document.querySelector('.add-project-card')?.addEventListener('click',()=>Modal.show());
   },
   cardHTML(p) {
     const {pct}=projProg(p), st=STATUSES[p.status]||STATUSES.planning;
@@ -768,6 +769,9 @@ const Dashboard = {
         <span class="status-dot ${p.invoiceDue?'dot-red':'dot-muted'}">Rechnung</span>
       </div><span class="updated-label">${relTime(p.updatedAt)}</span></div>
     </div></div>`;
+  },
+  addCardHTML() {
+    return `<div class="add-project-card" style="cursor:pointer;"><div class="project-card-inner" style="justify-content:center;align-items:center;min-height:200px;"><div style="text-align:center;"><div style="font-size:2rem;margin-bottom:0.5rem;">+</div><div style="font-family:var(--fmono);font-size:0.85rem;color:var(--t2);">Neues Projekt</div></div></div></div>`;
   }
 };
 
